@@ -3,8 +3,10 @@ import 'dotenv/config'
 const key = process.env.MAPS_KEY
 const client = new Client();
 
-export const ballard = () =>{
-   return client
+let finalData;
+
+const fetchData = () => {
+  return client
   .findPlaceFromText({
     params: {
         input: "Ballard Street Cafe",
@@ -13,18 +15,32 @@ export const ballard = () =>{
         fields: ["place_id", "name", "formatted_address"],
     },
   })
-  .then(r => {
+  .then(async r => {
+    finalData = await getReview(r)
+  })
+  .catch(e => {
+    console.log(e)
+  });
+}
+
+const getReview = (r) => {
     const id = r.data.candidates[0].place_id;
-    client.placeDetails({
+    return client
+    .placeDetails({
         params : {
             place_id: id,
             key: key
         }
     }).then(r => {
-        console.log(r.data.result)
-    })
-  })
-  .catch(e => {
-    console.log(e)
-  });
+        const theData = r.data.result;
+        // finalData = theData
+        // console.log('theData', theData);
+        return theData;
+    }).catch(err => console.log(err))
+}
+
+export const ballard = async () =>{
+  await fetchData();
+//   console.log("finalData", await finalData);
+  return finalData;
 }
