@@ -2,9 +2,11 @@
   "name": "ballard-street-cafe-official",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
+    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ajax12233512/ballard-street-cafe-official/issues"
   },
-  "homepage": "https://github.com/ajax12233512/ballard-street-cafe-official#readme"
+  "homepage": "https://github.com/ajax12233512/ballard-street-cafe-official#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
 }

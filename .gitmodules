@@ -1,0 +1,3 @@
+[submodule "client"]
+	path = client
+	url = git@github.com:caitlyn-griffing/ballard-street-cafe.git
