@@ -7,9 +7,13 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/api', async (req, res) => {
-    const clientResponse = await ballard();
-    // console.log('client response', clientResponse)
-    res.send(clientResponse)
+    try{
+        const clientResponse = await ballard();
+        // console.log('client response', clientResponse)
+        res.send(clientResponse)
+    } catch(e){
+        console.log(e)
+    }
 })
 
 
