@@ -20,5 +20,8 @@
   "homepage": "https://github.com/ajax12233512/ballard-street-cafe-official#readme",
   "devDependencies": {
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.3.0"
   }
 }
